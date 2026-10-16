@@ -1,0 +1,31 @@
+{{- /*
+  Checks the data files once per build and stops with a plain-English message
+  when something is missing or misspelled. When a build fails on GitHub, the
+  previous version of the site stays online.
+*/ -}}
+{{- $p := hugo.Data.profile -}}
+{{- if not $p }}{{ errorf "data/profile.yaml is missing or empty" }}{{ end -}}
+{{- range slice "name" "headline" "bio" "title" "affiliation" "email" "photo" -}}
+  {{- if not (index $p .) }}{{ errorf "data/profile.yaml: missing %q" . }}{{ end -}}
+{{- end -}}
+{{- with $p.photo }}{{ if not (resources.Get .src) }}{{ errorf "data/profile.yaml: photo %q not found in assets/" .src }}{{ end }}{{ end -}}
+
+{{- $dateRE := `^\d{4}(-\d{2}(-\d{2})?)?$` -}}
+{{- $newsTypes := slice "talk" "paper" "award" "teaching" "other" -}}
+{{- range $i, $n := hugo.Data.news -}}
+  {{- $num := add $i 1 -}}
+  {{- if not $n.date }}{{ errorf "data/news.yaml item %d: missing date (use 2026-04-11, 2026-04, or 2026)" $num }}{{ end -}}
+  {{- if not (findRE $dateRE (string $n.date)) }}{{ errorf "data/news.yaml item %d: date %q should look like 2026-04-11, 2026-04, or 2026" $num (string $n.date) }}{{ end -}}
+  {{- if not $n.text }}{{ errorf "data/news.yaml item %d: missing text" $num }}{{ end -}}
+  {{- with $n.type }}{{ if not (in $newsTypes .) }}{{ errorf "data/news.yaml item %d: type %q must be one of: %s" $num . (delimit $newsTypes ", ") }}{{ end }}{{ end -}}
+{{- end -}}
+
+{{- $statuses := slice "ongoing" "in-progress" "completed" -}}
+{{- range $file, $pr := hugo.Data.projects -}}
+  {{- $where := printf "data/projects/%s.yaml" $file -}}
+  {{- if not $pr.title }}{{ errorf "%s: missing title" $where }}{{ end -}}
+  {{- if not $pr.summary }}{{ errorf "%s: missing summary" $where }}{{ end -}}
+  {{- if ne (string $pr.slug) $file }}{{ errorf "%s: slug %q must match the file name (%q)" $where (string $pr.slug) $file }}{{ end -}}
+  {{- if not (findRE `^[a-z0-9]+(-[a-z0-9]+)*$` $file) }}{{ errorf "%s: file name must be lowercase letters, numbers, and hyphens" $where }}{{ end -}}
+  {{- with $pr.status }}{{ if not (in $statuses .) }}{{ errorf "%s: status %q must be one of: %s" $where . (delimit $statuses ", ") }}{{ end }}{{ end -}}
+{{- end -}}

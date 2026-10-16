@@ -1,0 +1,15 @@
+# Hugo build output and caches
+/public/
+/resources/_gen/
+.hugo_build.lock
+
+# Private source documents never go in this public repo
+*.docx
+*.doc
+
+# Research data never goes in this repo
+*.tsv
+*.csv
+
+# macOS
+.DS_Store

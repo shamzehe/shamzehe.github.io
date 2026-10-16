@@ -1,0 +1,7 @@
+{{/* Email link assembled in the browser (main.js). Without JavaScript it reads "user [at] domain".
+     Params: email (dict user/domain), class, icon (bool), hideText (bool) */}}
+<a class="{{ .class }}" data-email-user="{{ .email.user }}" data-email-domain="{{ .email.domain }}">
+  {{- if .icon }}{{ partial "icon.html" (dict "name" "mail") }}{{ end -}}
+  <span data-email-text{{ if .hideText }} class="visually-hidden"{{ end }}>{{ .email.user }} [at] {{ .email.domain }}</span>
+</a>
+{{- /**/ -}}

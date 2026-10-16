@@ -1,0 +1,11 @@
+{{- /* Builds one page per file in data/projects/ at /research/<slug>/. */ -}}
+{{- range $file, $p := hugo.Data.projects -}}
+  {{- $content := dict "mediaType" "text/markdown" "value" (or $p.body "") -}}
+  {{- $.AddPage (dict
+      "kind" "page"
+      "path" $file
+      "title" $p.title
+      "params" (dict "project" $p "description" $p.summary)
+      "content" $content
+  ) -}}
+{{- end -}}

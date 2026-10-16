@@ -1,0 +1,21 @@
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="color-scheme" content="light dark">
+{{ partial "theme-init.html" . }}
+{{- $p := hugo.Data.profile }}
+<title>{{ if .IsHome }}{{ site.Title }} · {{ $p.eyebrow }}{{ else }}{{ .Title }} · {{ site.Title }}{{ end }}</title>
+<meta name="description" content="{{ or .Description site.Params.description }}">
+<link rel="canonical" href="{{ .Permalink }}">
+<link rel="icon" href="{{ "favicon.svg" | relURL }}" type="image/svg+xml">
+<link rel="preload" href="{{ "fonts/inter/inter-latin-wght-normal.woff2" | relURL }}" as="font" type="font/woff2" crossorigin>
+{{- $files := slice "tokens" "fonts" "base" "layout" "components" "home" "pages" }}
+{{- $parts := slice }}
+{{- range $files }}{{ $parts = $parts | append (resources.Get (printf "css/%s.css" .)) }}{{ end }}
+{{- $css := $parts | resources.Concat "css/site.css" }}
+{{- if hugo.IsProduction }}
+  {{- $css = $css | minify | fingerprint }}
+<link rel="stylesheet" href="{{ $css.RelPermalink }}" integrity="{{ $css.Data.Integrity }}" crossorigin="anonymous">
+{{- else }}
+<link rel="stylesheet" href="{{ $css.RelPermalink }}">
+{{- end }}
+{{ partial "seo.html" . }}

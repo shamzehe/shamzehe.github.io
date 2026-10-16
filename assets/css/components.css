@@ -1,0 +1,199 @@
+/* ── Components ───────────────────────────────────────────────────────── */
+.icon { width: 18px; height: 18px; flex: none; }
+
+/* Buttons */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  min-height: 44px;
+  padding: 10px 18px;
+  border: 1px solid var(--border-strong);
+  border-radius: 999px;
+  background: var(--surface);
+  color: var(--text);
+  font-size: 0.95rem;
+  font-weight: 600;
+  line-height: 1;
+  text-decoration: none;
+  cursor: pointer;
+  transition: background 0.15s ease, border-color 0.15s ease, color 0.15s ease, transform 0.15s ease;
+}
+.btn:hover { border-color: var(--accent); color: var(--accent); }
+.btn:active { transform: translateY(1px); }
+.btn-primary { background: var(--accent); border-color: var(--accent); color: var(--on-accent); }
+.btn-primary:hover { background: var(--accent-hover); border-color: var(--accent-hover); color: var(--on-accent); }
+.btn-meta {
+  padding: 3px 6px;
+  border-radius: 6px;
+  background: color-mix(in srgb, currentColor 14%, transparent);
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+.btn-disabled { color: var(--text-3); border-style: dashed; cursor: default; }
+.btn-disabled:hover { color: var(--text-3); border-color: var(--border-strong); }
+
+/* Round icon links */
+.icon-links { display: flex; gap: 8px; }
+.icon-link {
+  display: grid;
+  place-items: center;
+  width: 44px; height: 44px;
+  border: 1px solid var(--border);
+  border-radius: 50%;
+  background: var(--surface);
+  color: var(--text-2);
+  transition: color 0.15s ease, border-color 0.15s ease, transform 0.15s ease;
+}
+.icon-link:hover { color: var(--accent); border-color: var(--accent); transform: translateY(-1px); }
+.icon-link .icon { width: 19px; height: 19px; }
+
+/* Chips */
+.chips { display: flex; flex-wrap: wrap; gap: 6px; }
+.chips li {
+  padding: 4px 10px;
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  background: var(--surface-2);
+  color: var(--text-2);
+  font-size: 0.8rem;
+  font-weight: 500;
+  line-height: 1.4;
+}
+
+/* Pills (status) */
+.pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 3px 9px;
+  border-radius: 999px;
+  font-size: 0.74rem;
+  font-weight: 650;
+  letter-spacing: 0.02em;
+}
+.pill::before { content: ""; width: 6px; height: 6px; border-radius: 50%; background: currentColor; }
+.pill-ongoing { background: var(--green-soft); color: var(--green); }
+.pill-in-progress { background: var(--warm-soft); color: var(--warm); }
+.pill-completed { background: var(--surface-2); color: var(--text-2); }
+.pill-tech { background: var(--accent-soft); color: var(--accent); }
+.pill-tech::before { border-radius: 2px; }
+
+/* Cards */
+.card {
+  position: relative;
+  padding: clamp(20px, 2.4vw, 26px);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  background: var(--surface);
+  box-shadow: var(--shadow-sm);
+}
+.card h3 { margin-bottom: 8px; }
+.card p { color: var(--text-2); font-size: 0.97rem; }
+.card > :last-child { margin-bottom: 0; }
+
+/* Project cards: the whole card is clickable via the title link. */
+.project-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(min(100%, 320px), 1fr));
+  gap: 18px;
+}
+.project-card {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  transition: transform 0.18s ease, box-shadow 0.18s ease, border-color 0.18s ease;
+}
+.project-card:hover { transform: translateY(-3px); box-shadow: var(--shadow-md); border-color: color-mix(in srgb, var(--accent) 35%, var(--border)); }
+.project-card:focus-within { border-color: var(--accent); }
+.project-card h3 { margin: 0; font-size: 1.12rem; }
+.project-card h3 a { color: var(--text); text-decoration: none; }
+.project-card p { margin: 0; }
+.project-card .chips { margin-top: 2px; }
+.stretched-link::after { content: ""; position: absolute; inset: 0; border-radius: inherit; }
+.stretched-link:focus-visible { outline: none; }
+.project-card:has(.stretched-link:focus-visible) { outline: 2px solid var(--accent); outline-offset: 3px; }
+.project-meta { display: flex; flex-wrap: wrap; align-items: center; gap: 8px; }
+.project-period { color: var(--text-3); font-size: 0.82rem; font-family: var(--font-mono); }
+.card-cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  margin-top: auto;
+  padding-top: 6px;
+  color: var(--accent);
+  font-size: 0.9rem;
+  font-weight: 600;
+}
+.card-cta .icon { width: 16px; height: 16px; transition: transform 0.18s ease; }
+.project-card:hover .card-cta .icon { transform: translateX(3px); }
+
+.more-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-weight: 600;
+  text-decoration: none;
+}
+.more-link .icon { width: 16px; height: 16px; }
+
+/* News timeline */
+.news-list { position: relative; }
+.news-item {
+  position: relative;
+  display: grid;
+  grid-template-columns: 7.5rem 1fr;
+  gap: 4px 20px;
+  padding: 14px 0 14px 22px;
+  border-left: 2px solid var(--border);
+}
+.news-item::before {
+  content: "";
+  position: absolute;
+  left: -6px; top: 22px;
+  width: 10px; height: 10px;
+  border-radius: 50%;
+  background: var(--bg);
+  border: 2px solid var(--accent);
+}
+.section-alt .news-item::before { background: var(--surface-2); }
+.news-date {
+  padding-top: 2px;
+  color: var(--text-3);
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+}
+.news-text { color: var(--text-2); }
+.news-text p { margin: 0; }
+.news-text strong { color: var(--text); }
+.news-more { margin-top: 12px; }
+.news-more summary {
+  display: inline-flex;
+  padding: 8px 14px;
+  border: 1px solid var(--border-strong);
+  border-radius: 999px;
+  color: var(--text-2);
+  font-size: 0.9rem;
+  font-weight: 600;
+  cursor: pointer;
+  list-style: none;
+}
+.news-more summary::-webkit-details-marker { display: none; }
+.news-more summary::after { content: "+"; margin-left: 8px; color: var(--accent); }
+.news-more[open] summary::after { content: "−"; }
+.news-more[open] summary { margin-bottom: 8px; }
+@media (max-width: 560px) {
+  .news-item { grid-template-columns: 1fr; }
+}
+
+.placeholder-note {
+  padding: 14px 18px;
+  border: 1px dashed var(--border-strong);
+  border-radius: var(--radius);
+  color: var(--text-3);
+  font-size: 0.95rem;
+}

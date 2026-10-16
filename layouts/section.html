@@ -1,0 +1,15 @@
+{{ define "main" }}
+<section class="page-hero">
+  <div class="container narrow">
+    {{- with .Params.label }}<p class="section-label ipa" lang="en-fonipa" aria-hidden="true">{{ . }}</p>{{ end }}
+    <h1>{{ .Title }}</h1>
+    {{- with .Description }}<p class="page-lead">{{ . }}</p>{{ end }}
+  </div>
+</section>
+<section class="section">
+  <div class="container narrow prose">
+    {{ .Content }}
+    <p class="placeholder-note">This page is being built and will be ready for review soon.</p>
+  </div>
+</section>
+{{ end }}

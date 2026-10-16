@@ -1,0 +1,27 @@
+{{ define "main" }}
+{{- $projects := slice }}
+{{- range $slug, $pr := hugo.Data.projects }}{{ $projects = $projects | append $pr }}{{ end }}
+{{- $projects = sort $projects "order" }}
+<section class="page-hero">
+  <div class="container narrow">
+    {{- with .Params.label }}<p class="section-label ipa" lang="en-fonipa" aria-hidden="true">{{ . }}</p>{{ end }}
+    <h1>{{ .Title }}</h1>
+    {{- with .Description }}<p class="page-lead">{{ . }}</p>{{ end }}
+  </div>
+</section>
+<section class="section">
+  <div class="container">
+    <h2 class="group-title">Research</h2>
+    <div class="project-grid">
+      {{- range where $projects "kind" "!=" "technical" }}{{ partial "project-card.html" . }}{{ end }}
+    </div>
+    {{- with where $projects "kind" "technical" }}
+    <h2 class="group-title">Technical projects</h2>
+    <div class="project-grid">
+      {{- range . }}{{ partial "project-card.html" . }}{{ end }}
+    </div>
+    {{- end }}
+    <p class="placeholder-note">Full write-ups for each project are coming next.</p>
+  </div>
+</section>
+{{ end }}

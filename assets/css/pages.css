@@ -1,0 +1,25 @@
+/* ── Inner pages ──────────────────────────────────────────────────────── */
+.breadcrumb { margin: 0 0 10px; font-size: 0.9rem; }
+.breadcrumb a { text-decoration: none; }
+.breadcrumb a::before { content: "← "; }
+.page-hero .project-meta { margin-bottom: 14px; }
+.page-hero .chips { margin-top: 4px; }
+
+.group-title {
+  margin: 0 0 18px;
+  font-size: clamp(1.4rem, 1vw + 1.1rem, 1.75rem);
+}
+.group-title:not(:first-child) { margin-top: clamp(40px, 5vw, 64px); }
+
+.prose { color: var(--text-2); }
+.prose h2, .prose h3 { color: var(--text); margin-top: 1.6em; }
+.prose > :first-child { margin-top: 0; }
+
+.error-page { padding-bottom: var(--section-y); }
+
+@media print {
+  .site-header, .theme-toggle, .nav-toggle, .skip-link, .contact-band, .hero-wave { display: none !important; }
+  body { background: #fff; color: #000; }
+  .section-alt { background: none; }
+  a { color: inherit; }
+}

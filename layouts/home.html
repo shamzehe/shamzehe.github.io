@@ -1,0 +1,165 @@
+{{ define "main" }}
+{{- $p := hugo.Data.profile }}
+{{- $projects := slice }}
+{{- range $slug, $pr := hugo.Data.projects }}{{ $projects = $projects | append $pr }}{{ end }}
+{{- $featured := where (sort $projects "order") "featured" true }}
+
+<section class="hero" aria-labelledby="hero-name">
+  <div class="container hero-grid">
+    <div class="hero-text">
+      <p class="eyebrow">{{ $p.eyebrow }}</p>
+      <h1 id="hero-name" class="hero-name">{{ $p.name }}</h1>
+      <p class="hero-meta">
+        {{- with $p.ipa }}<span class="ipa" lang="fa-fonipa" title="Pronunciation in the International Phonetic Alphabet">[{{ . }}]</span>{{ end }}
+        {{- with $p.name_native }}<span class="sep" aria-hidden="true">·</span><span class="native" lang="fa" dir="rtl">{{ . }}</span>{{ end }}
+        {{- with $p.pronouns }}<span class="sep" aria-hidden="true">·</span><span class="pronouns">{{ . }}</span>{{ end }}
+      </p>
+      <div class="hero-wave">{{ partial "waveform.html" . }}</div>
+      <p class="hero-headline">{{ $p.headline }}</p>
+      <div class="hero-bio">{{ $p.bio | $.RenderString (dict "display" "block") }}</div>
+      {{- with $p.interests }}
+      <p class="hero-interests"><span class="label">Research interests</span> {{ delimit . " · " }}</p>
+      {{- end }}
+      <div class="hero-actions">
+        {{- range $p.documents }}
+          {{- if os.FileExists (path.Join "static" .file) }}
+        <a class="btn{{ if .primary }} btn-primary{{ end }}" href="{{ .file | relURL }}">{{ partial "icon.html" (dict "name" "file") }}{{ .label }}<span class="btn-meta">PDF</span></a>
+          {{- else }}
+        <span class="btn btn-disabled" title="Coming soon">{{ partial "icon.html" (dict "name" "file") }}{{ .label }}<span class="btn-meta">soon</span></span>
+          {{- end }}
+        {{- end }}
+        <ul class="icon-links" role="list">
+          {{- range $p.links }}
+          <li><a class="icon-link" href="{{ .url }}" rel="me noopener" title="{{ .label }}">{{ partial "icon.html" (dict "name" .icon) }}<span class="visually-hidden">{{ .label }}</span></a></li>
+          {{- end }}
+          <li>{{ partial "email-link.html" (dict "email" $p.email "class" "icon-link" "icon" true "hideText" true) }}</li>
+        </ul>
+      </div>
+      {{- with $p.open_to }}
+      <p class="open-to"><span class="status-dot" aria-hidden="true"></span>{{ . }}</p>
+      {{- end }}
+    </div>
+    <figure class="hero-photo">
+      {{- with resources.Get $p.photo.src }}
+        {{- $sq := .Crop "1000x1000 Top" }}
+        {{- $s := $sq.Process "resize 360x webp q82" }}
+        {{- $m := $sq.Process "resize 560x webp q82" }}
+        {{- $l := $sq.Process "resize 840x webp q80" }}
+        {{- $fb := $sq.Process "resize 560x jpg q82" }}
+      <picture>
+        <source type="image/webp" srcset="{{ $s.RelPermalink }} 360w, {{ $m.RelPermalink }} 560w, {{ $l.RelPermalink }} 840w" sizes="(min-width: 960px) 400px, (min-width: 640px) 320px, 72vw">
+        <img src="{{ $fb.RelPermalink }}" width="{{ $fb.Width }}" height="{{ $fb.Height }}" alt="{{ $p.photo.alt }}" fetchpriority="high" decoding="async">
+      </picture>
+      {{- end }}
+    </figure>
+  </div>
+</section>
+
+<section class="section" aria-labelledby="focus-h">
+  <div class="container">
+    <header class="section-head">
+      <p class="section-label ipa" lang="en-fonipa" aria-hidden="true">/ˈfoʊkəs/</p>
+      <h2 id="focus-h">What I work on</h2>
+    </header>
+    <div class="focus-grid">
+      {{- range $p.focus }}
+      <article class="card focus-card">
+        <p class="focus-notation" aria-hidden="true">{{ .notation }}</p>
+        <h3>{{ .title }}</h3>
+        <p>{{ .text }}</p>
+        <ul class="chips" role="list">{{ range .tools }}<li>{{ . }}</li>{{ end }}</ul>
+      </article>
+      {{- end }}
+    </div>
+  </div>
+</section>
+
+{{- with $featured }}
+<section class="section section-alt" aria-labelledby="projects-h">
+  <div class="container">
+    <header class="section-head section-head-row">
+      <div>
+        <p class="section-label ipa" lang="en-fonipa" aria-hidden="true">/ˈpɹɑdʒɛkts/</p>
+        <h2 id="projects-h">Selected projects</h2>
+      </div>
+      <a class="more-link" href="{{ "research/" | relURL }}">All research &amp; projects{{ partial "icon.html" (dict "name" "arrow-right") }}</a>
+    </header>
+    <div class="project-grid">
+      {{- range . }}{{ partial "project-card.html" . }}{{ end }}
+    </div>
+  </div>
+</section>
+{{- end }}
+
+<section class="section" aria-labelledby="skills-h">
+  <div class="container skills-layout">
+    <div>
+      <header class="section-head">
+        <p class="section-label ipa" lang="en-fonipa" aria-hidden="true">/skɪlz/</p>
+        <h2 id="skills-h">Skills &amp; tools</h2>
+      </header>
+      <dl class="skill-groups">
+        {{- range hugo.Data.skills }}
+        <div class="skill-group">
+          <dt>{{ .group }}</dt>
+          <dd><ul class="chips" role="list">{{ range .items }}<li>{{ . }}</li>{{ end }}</ul></dd>
+        </div>
+        {{- end }}
+      </dl>
+    </div>
+    <aside class="card languages-card" aria-labelledby="lang-h">
+      <h3 id="lang-h">Languages</h3>
+      <ul class="lang-list" role="list">
+        {{- range $p.languages }}
+          {{- $lvl := index (dict "Native" 5 "Full professional" 4 "Professional working" 3 "Limited working" 2 "Basic reading" 1 "Elementary" 1) .level | default 0 }}
+        <li>
+          <span class="lang-name">{{ .name }}</span>
+          <span class="lang-level">{{ .level }}</span>
+          <span class="lang-meter" aria-hidden="true">{{ range seq 5 }}<i{{ if le . $lvl }} class="on"{{ end }}></i>{{ end }}</span>
+        </li>
+        {{- end }}
+      </ul>
+    </aside>
+  </div>
+</section>
+
+{{- with hugo.Data.news }}
+<section class="section section-alt" aria-labelledby="news-h">
+  <div class="container narrow">
+    <header class="section-head">
+      <p class="section-label ipa" lang="en-fonipa" aria-hidden="true">/nuz/</p>
+      <h2 id="news-h">News</h2>
+    </header>
+    <ol class="news-list" role="list">
+      {{- range first 6 . }}{{ partial "news-item.html" . }}{{ end }}
+    </ol>
+    {{- if gt (len .) 6 }}
+    <details class="news-more">
+      <summary>Earlier news</summary>
+      <ol class="news-list" role="list">
+        {{- range after 6 . }}{{ partial "news-item.html" . }}{{ end }}
+      </ol>
+    </details>
+    {{- end }}
+  </div>
+</section>
+{{- end }}
+
+<section class="section" aria-labelledby="contact-h">
+  <div class="container">
+    <div class="contact-band">
+      <div>
+        <p class="section-label ipa" lang="en-fonipa" aria-hidden="true">/ˈkɑntækt/</p>
+        <h2 id="contact-h">Let's talk</h2>
+        <p>I'm always glad to hear about research collaborations, internships, and roles in speech and language technology.</p>
+      </div>
+      <div class="contact-actions">
+        {{ partial "email-link.html" (dict "email" $p.email "class" "btn btn-primary" "icon" true) }}
+        {{- range where $p.links "icon" "linkedin" }}
+        <a class="btn" href="{{ .url }}" rel="me noopener">{{ partial "icon.html" (dict "name" "linkedin") }}LinkedIn</a>
+        {{- end }}
+      </div>
+    </div>
+  </div>
+</section>
+{{ end }}

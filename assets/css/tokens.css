@@ -1,0 +1,103 @@
+/* ── Design tokens ─────────────────────────────────────────────────────────
+   Light theme by default, dark theme from the system setting unless the
+   visitor chose light, or when they chose dark with the toggle.          */
+:root {
+  --bg: #fbfaf7;
+  --surface: #ffffff;
+  --surface-2: #f4f2ed;
+  --text: #1b1e2b;
+  --text-2: #4a5065;
+  --text-3: #646a80;
+  --border: #e6e2da;
+  --border-strong: #d3cec3;
+  --accent: #3730a3;
+  --accent-hover: #2a2580;
+  --accent-soft: #ecebfa;
+  --on-accent: #ffffff;
+  --warm: #b4430b;
+  --warm-soft: #fbeee4;
+  --green: #18794e;
+  --green-soft: #e3f3ea;
+  --wave-1: #4338ca;
+  --wave-2: #a21caf;
+  --wave-3: #ea580c;
+  --tier-line: #b8b2a6;
+  --tier-text: #4a5065;
+  --shadow-sm: 0 1px 2px rgb(27 30 43 / 0.06);
+  --shadow-md: 0 1px 2px rgb(27 30 43 / 0.05), 0 10px 30px -10px rgb(27 30 43 / 0.16);
+  --photo-ring: #d9d5f6;
+
+  --font-serif: "Charis", Georgia, "Times New Roman", serif;
+  --font-sans: "Inter", ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  --font-ipa: "Charis", "Charis SIL", "Gentium Plus", "Doulos SIL", "Noto Serif", serif;
+  --font-mono: ui-monospace, "SF Mono", SFMono-Regular, Menlo, Consolas, monospace;
+  --font-fa: "Vazirmatn", "Noto Naskh Arabic", Tahoma, sans-serif;
+
+  --radius-sm: 8px;
+  --radius: 14px;
+  --radius-lg: 22px;
+  --container: 1120px;
+  --narrow: 780px;
+  --gutter: clamp(16px, 4vw, 32px);
+  --section-y: clamp(56px, 8vw, 96px);
+  --header-h: 64px;
+  color-scheme: light;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #0d1020;
+    --surface: #141830;
+    --surface-2: #10142a;
+    --text: #e9eaf2;
+    --text-2: #b6bacb;
+    --text-3: #9499ae;
+    --border: #252a45;
+    --border-strong: #363c60;
+    --accent: #a5b4fc;
+    --accent-hover: #c7d2fe;
+    --accent-soft: #1d2148;
+    --on-accent: #0d1020;
+    --warm: #fdba74;
+    --warm-soft: #3a2116;
+    --green: #6ee7a8;
+    --green-soft: #12301f;
+    --wave-1: #818cf8;
+    --wave-2: #e879f9;
+    --wave-3: #fb923c;
+    --tier-line: #474d72;
+    --tier-text: #b6bacb;
+    --shadow-sm: 0 1px 2px rgb(0 0 0 / 0.4);
+    --shadow-md: 0 1px 2px rgb(0 0 0 / 0.35), 0 12px 32px -12px rgb(0 0 0 / 0.6);
+    --photo-ring: #2b3064;
+    color-scheme: dark;
+  }
+}
+
+:root[data-theme="dark"] {
+  --bg: #0d1020;
+  --surface: #141830;
+  --surface-2: #10142a;
+  --text: #e9eaf2;
+  --text-2: #b6bacb;
+  --text-3: #9499ae;
+  --border: #252a45;
+  --border-strong: #363c60;
+  --accent: #a5b4fc;
+  --accent-hover: #c7d2fe;
+  --accent-soft: #1d2148;
+  --on-accent: #0d1020;
+  --warm: #fdba74;
+  --warm-soft: #3a2116;
+  --green: #6ee7a8;
+  --green-soft: #12301f;
+  --wave-1: #818cf8;
+  --wave-2: #e879f9;
+  --wave-3: #fb923c;
+  --tier-line: #474d72;
+  --tier-text: #b6bacb;
+  --shadow-sm: 0 1px 2px rgb(0 0 0 / 0.4);
+  --shadow-md: 0 1px 2px rgb(0 0 0 / 0.35), 0 12px 32px -12px rgb(0 0 0 / 0.6);
+  --photo-ring: #2b3064;
+  color-scheme: dark;
+}

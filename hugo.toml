@@ -1,0 +1,43 @@
+baseURL = 'https://shamzehe.github.io/'
+locale = 'en-US'
+title = 'Samira Hamzehei'
+enableRobotsTXT = true
+disableKinds = ['taxonomy', 'term', 'rss']
+
+[params]
+  description = 'Samira Hamzehei is a linguist and Ph.D. student in Language Science at UC Irvine working on speech, phonology, and multilingual language data.'
+
+[menus]
+  [[menus.main]]
+    name = 'Research & Projects'
+    pageRef = '/research'
+    weight = 10
+  [[menus.main]]
+    name = 'Publications & Talks'
+    pageRef = '/publications'
+    weight = 20
+  [[menus.main]]
+    name = 'Teaching'
+    pageRef = '/teaching'
+    weight = 30
+  [[menus.main]]
+    name = 'CV'
+    pageRef = '/cv'
+    weight = 40
+
+[markup.goldmark.renderer]
+  unsafe = false
+
+[imaging]
+  resampleFilter = 'Lanczos'
+  [imaging.jpeg]
+    quality = 82
+  [imaging.webp]
+    quality = 82
+
+[sitemap]
+  changeFreq = 'monthly'
+
+[module.hugoVersion]
+  extended = false
+  min = '0.168.0'

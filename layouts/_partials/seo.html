@@ -1,0 +1,41 @@
+{{- $p := hugo.Data.profile }}
+{{- $title := cond .IsHome site.Title (printf "%s · %s" .Title site.Title) }}
+{{- $desc := or .Description site.Params.description }}
+<meta property="og:type" content="{{ cond .IsHome "profile" "website" }}">
+<meta property="og:title" content="{{ $title }}">
+<meta property="og:description" content="{{ $desc }}">
+<meta property="og:url" content="{{ .Permalink }}">
+<meta property="og:site_name" content="{{ site.Title }}">
+<meta property="og:locale" content="en_US">
+{{- $share := "" }}
+{{- with resources.Get "images/social-preview.png" }}
+  {{- $share = . }}
+{{- else }}
+  {{- with resources.Get $p.photo.src }}{{ $share = .Process "fill 1200x630 Top jpg q82" }}{{ end }}
+{{- end }}
+{{- with $share }}
+<meta property="og:image" content="{{ .Permalink }}">
+<meta property="og:image:width" content="{{ .Width }}">
+<meta property="og:image:height" content="{{ .Height }}">
+<meta property="og:image:alt" content="{{ $p.name }}, {{ $p.title }}, {{ $p.affiliation.name }}">
+{{- end }}
+<meta name="twitter:card" content="summary_large_image">
+{{- if .IsHome }}
+  {{- $sameAs := slice }}
+  {{- range $p.links }}{{ $sameAs = $sameAs | append .url }}{{ end }}
+  {{- $langs := slice }}
+  {{- range $p.languages }}{{ $langs = $langs | append .name }}{{ end }}
+  {{- $person := dict
+      "@context" "https://schema.org"
+      "@type" "Person"
+      "name" $p.name
+      "jobTitle" $p.title
+      "affiliation" (dict "@type" "CollegeOrUniversity" "name" $p.affiliation.name "url" $p.affiliation.url)
+      "url" site.Home.Permalink
+      "sameAs" $sameAs
+      "knowsLanguage" $langs
+      "knowsAbout" $p.interests
+  }}
+  {{- with resources.Get $p.photo.src }}{{ $person = merge $person (dict "image" (.Process "fill 600x600 Top jpg q82").Permalink) }}{{ end }}
+<script type="application/ld+json">{{ $person | jsonify | safeJS }}</script>
+{{- end }}

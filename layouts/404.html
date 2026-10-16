@@ -1,0 +1,10 @@
+{{ define "main" }}
+<section class="page-hero error-page">
+  <div class="container narrow">
+    <p class="section-label ipa" lang="en-fonipa" aria-hidden="true">*/peɪdʒ/</p>
+    <h1>Page not found</h1>
+    <p class="page-lead">Like an unattested form, this page doesn't exist. The link may be old or mistyped.</p>
+    <p><a class="btn btn-primary" href="{{ "/" | relURL }}">Go to the home page{{ partial "icon.html" (dict "name" "arrow-right") }}</a></p>
+  </div>
+</section>
+{{ end }}

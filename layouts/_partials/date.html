@@ -1,0 +1,9 @@
+{{- /* Formats "2026", "2026-04" or "2026-04-11" as "2026" / "Apr 2026". */ -}}
+{{- $s := string . -}}
+{{- if eq (len $s) 4 -}}
+  {{- $s -}}
+{{- else if eq (len $s) 7 -}}
+  {{- (time.AsTime (printf "%s-01" $s)).Format "Jan 2006" -}}
+{{- else -}}
+  {{- (time.AsTime $s).Format "Jan 2006" -}}
+{{- end -}}

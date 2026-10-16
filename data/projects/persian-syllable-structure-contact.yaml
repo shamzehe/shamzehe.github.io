@@ -1,0 +1,14 @@
+# ─────────────────────────────────────────────────────────────────────────────
+# One project. The file name must match `slug` (lowercase-with-hyphens) and
+# becomes the page address: /research/<slug>/
+#   status: ongoing | in-progress | completed      (optional)
+#   featured: true                                  (shows on the home page)
+# ─────────────────────────────────────────────────────────────────────────────
+title: "Language contact and Persian syllable structure"
+slug: "persian-syllable-structure-contact"
+order: 2
+featured: true
+status: "ongoing"
+period: "2025–present"
+summary: "With Connor Mayer and Gregory Scontras (UC Irvine), studying how contact with English in Southern California may be changing Persian syllable structure."
+tags: ["Language contact", "Bilingualism", "Phonotactics", "Online experiments"]

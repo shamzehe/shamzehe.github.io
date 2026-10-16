@@ -1,0 +1,20 @@
+# ─────────────────────────────────────────────────────────────────────────────
+# Skills & tools, shown on the home page and the CV page.
+#
+#   - group: "Group name"
+#     items: ["Skill one", "Skill two"]
+# ─────────────────────────────────────────────────────────────────────────────
+- group: "Programming & analysis"
+  items: ["Python", "R", "JavaScript (jsPsych)", "HTML & CSS"]
+
+- group: "Speech & audio"
+  items: ["Praat", "Audacity", "Acoustic analysis", "Audio stimulus preparation"]
+
+- group: "Experiments & data"
+  items: ["Browser-based experiments", "Perception & production studies", "EEG data collection", "Corpus linguistics", "LEAP-Q questionnaires"]
+
+- group: "Machine learning"
+  items: ["Regression & classification", "Neural networks", "Unsupervised learning", "Recommender systems", "Reinforcement learning"]
+
+- group: "Linguistics"
+  items: ["Phonology", "Phonetics", "Optimality Theory", "Weighted constraints", "Loanword phonology", "Sociophonetics", "Pragmatics"]

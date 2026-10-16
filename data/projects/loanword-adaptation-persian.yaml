@@ -1,0 +1,14 @@
+# ─────────────────────────────────────────────────────────────────────────────
+# One project. The file name must match `slug` (lowercase-with-hyphens) and
+# becomes the page address: /research/<slug>/
+#   status: ongoing | in-progress | completed      (optional)
+#   featured: true                                  (shows on the home page)
+# ─────────────────────────────────────────────────────────────────────────────
+title: "English loanwords in Colloquial Persian"
+slug: "loanword-adaptation-persian"
+order: 1
+featured: true
+status: "ongoing"
+period: "2022–present"
+summary: "How Persian speakers reshape English words to fit Persian sound patterns, modeled in Optimality Theory: cluster repair, metathesis, and reduction."
+tags: ["Loanword phonology", "Optimality Theory", "Persian", "Data collection"]

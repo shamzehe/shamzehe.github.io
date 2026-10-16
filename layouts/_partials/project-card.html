@@ -1,0 +1,16 @@
+{{- /* A project card. Context: one project from data/projects/. */ -}}
+{{- $statusLabel := dict "ongoing" "Ongoing" "in-progress" "In progress" "completed" "Completed" -}}
+<article class="card project-card{{ if eq .kind "technical" }} is-technical{{ end }}">
+  <div class="project-meta">
+    {{- if eq .kind "technical" }}<span class="pill pill-tech">Technical project</span>{{ end }}
+    {{- with .status }}<span class="pill pill-{{ . }}">{{ index $statusLabel . }}</span>{{ end }}
+    {{- with .period }}<span class="project-period">{{ . }}</span>{{ end }}
+  </div>
+  <h3><a class="stretched-link" href="{{ printf "research/%s/" .slug | relURL }}">{{ .title }}</a></h3>
+  <p>{{ .summary }}</p>
+  {{- with .tags }}
+  <ul class="chips" role="list">{{ range . }}<li>{{ . }}</li>{{ end }}</ul>
+  {{- end }}
+  <span class="card-cta" aria-hidden="true">Read more{{ partial "icon.html" (dict "name" "arrow-right") }}</span>
+</article>
+{{- /**/ -}}

@@ -1,0 +1,12 @@
+# ─────────────────────────────────────────────────────────────────────────────
+# One project. The file name must match `slug` (lowercase-with-hyphens) and
+# becomes the page address: /research/<slug>/
+#   status: ongoing | in-progress | completed      (optional)
+#   featured: true                                  (shows on the home page)
+# ─────────────────────────────────────────────────────────────────────────────
+title: "Weighted scalar constraints and loanword typology"
+slug: "weighted-scalar-constraints"
+order: 4
+period: "2024"
+summary: "A typological model of loanword adaptation built on weighted scalar constraints, presented at Emerging Topics in Typology (Stockholm University)."
+tags: ["Typology", "Weighted constraints", "Computational phonology"]

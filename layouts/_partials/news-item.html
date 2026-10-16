@@ -1,0 +1,6 @@
+{{- /* One news item. Context: an entry from data/news.yaml. */ -}}
+<li class="news-item">
+  <time class="news-date" datetime="{{ .date }}">{{ partial "date.html" .date }}</time>
+  <div class="news-text">{{ .text | markdownify }}</div>
+</li>
+{{- /**/ -}}

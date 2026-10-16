@@ -1,0 +1,16 @@
+{{- $p := hugo.Data.profile }}
+<footer class="site-footer">
+  <div class="container footer-inner">
+    <div class="footer-id">
+      <p class="footer-name">{{ $p.name }}</p>
+      <p class="footer-meta">{{ $p.title }} · {{ $p.affiliation.name }} · {{ $p.location }}</p>
+    </div>
+    <ul class="footer-links" role="list">
+      <li>{{ partial "email-link.html" (dict "email" $p.email "class" "footer-link") }}</li>
+      {{- range $p.links }}
+      <li><a class="footer-link" href="{{ .url }}" rel="me noopener">{{ .label }}</a></li>
+      {{- end }}
+    </ul>
+    <p class="footer-small">© {{ now.Year }} {{ $p.name }}. Built with Hugo. Type set in Charis (SIL Global), Inter, and Vazirmatn, all under the SIL Open Font License.</p>
+  </div>
+</footer>

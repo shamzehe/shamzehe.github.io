@@ -1,0 +1,23 @@
+{{ define "main" }}
+{{- $p := .Params.project }}
+{{- $statusLabel := dict "ongoing" "Ongoing" "in-progress" "In progress" "completed" "Completed" }}
+<section class="page-hero">
+  <div class="container narrow">
+    <p class="breadcrumb"><a href="{{ "research/" | relURL }}">Research &amp; Projects</a></p>
+    <h1>{{ .Title }}</h1>
+    <div class="project-meta">
+      {{- if eq $p.kind "technical" }}<span class="pill pill-tech">Technical project</span>{{ end }}
+      {{- with $p.status }}<span class="pill pill-{{ . }}">{{ index $statusLabel . }}</span>{{ end }}
+      {{- with $p.period }}<span class="project-period">{{ . }}</span>{{ end }}
+    </div>
+    <p class="page-lead">{{ $p.summary }}</p>
+    {{- with $p.tags }}<ul class="chips" role="list">{{ range . }}<li>{{ . }}</li>{{ end }}</ul>{{ end }}
+  </div>
+</section>
+<section class="section">
+  <div class="container narrow prose">
+    {{ .Content }}
+    {{- if not .Content }}<p class="placeholder-note">The full write-up for this project is coming next.</p>{{ end }}
+  </div>
+</section>
+{{ end }}

@@ -1,0 +1,12 @@
+# ─────────────────────────────────────────────────────────────────────────────
+# One project. The file name must match `slug` (lowercase-with-hyphens) and
+# becomes the page address: /research/<slug>/
+#   status: ongoing | in-progress | completed      (optional)
+#   featured: true                                  (shows on the home page)
+# ─────────────────────────────────────────────────────────────────────────────
+title: "/aɪ/ monophthongization in U.S. politicians"
+slug: "monophthongization-politicians"
+order: 5
+status: "in-progress"
+summary: "A production and perception study of the linguistic and social patterning of /aɪ/ monophthongization in the speech of U.S. politicians."
+tags: ["Sociophonetics", "Production", "Perception", "American English"]

@@ -1,0 +1,45 @@
+# ─────────────────────────────────────────────────────────────────────────────
+# News on the home page, newest first. The newest 6 are shown; older ones fold
+# into "Earlier news".
+#
+#   date: 2026-04-11      # YYYY-MM-DD, YYYY-MM, or just YYYY
+#   text: "What happened. **Bold** and [links](https://example.com) work."
+#   type: talk            # optional: talk | paper | award | teaching | other
+#
+# Copy an entry (all its lines), paste it at the top, and edit it.
+# ─────────────────────────────────────────────────────────────────────────────
+- date: "2026-08"
+  type: other
+  text: "Completed the three-course **Machine Learning Specialization** (Stanford University & DeepLearning.AI): supervised learning, advanced learning algorithms, and unsupervised learning, recommenders & reinforcement learning."
+
+- date: "2026-04"
+  type: talk
+  text: "Presented **Loanwords in Persian** at SCAMP 2026 (Southern California April Meetings on Phonology), University of Southern California."
+
+- date: "2025-11"
+  type: other
+  text: "Started a project with Dr. Connor Mayer and Dr. Gregory Scontras on how contact with English in Southern California may be changing Persian syllable structure."
+
+- date: "2025-09"
+  type: award
+  text: "Began the Ph.D. in Language Science at **UC Irvine** with a one-year **Student Support Fellowship** ($31,000)."
+
+- date: "2025-09"
+  type: other
+  text: "Joined the organizing committee of the UC Irvine Language Science Colloquium Series, which brings linguists from across the U.S. to speak each week."
+
+- date: "2025-05"
+  type: other
+  text: "Graduated from UT Arlington with an **M.A. in Linguistics** and a **TESOL Certificate**."
+
+- date: "2024"
+  type: talk
+  text: "Presented at **Emerging Topics in Typology** (Stockholm University), the **Student Conference on Linguistics 6** (Boğaziçi University), and **Texas Linguistics Society 23** (UT Austin)."
+
+- date: "2024-06"
+  type: award
+  text: "Awarded a Dean's Research Assistantship ($4,000) from the College of Liberal Arts, UT Arlington."
+
+- date: "2023-06-14"
+  type: paper
+  text: "Published a [review of *The Study of Language* by George Yule](https://old.linguistlist.org/issues/34/34-2139.html) on the LINGUIST List."

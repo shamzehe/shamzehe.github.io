@@ -1,0 +1,7 @@
+User-agent: *
+{{- /* Keep search engines away from the live research studies hosted on this domain. */}}
+{{- range slice "PersianLanguage" "Persian_Study" "Persian-Study" "Perception_Study" "Study" "Persian" "experiment" "experiment_V2" "Experiment_V3" "Persian_Study_NoWait" }}
+Disallow: /{{ . }}/
+{{- end }}
+
+Sitemap: {{ "sitemap.xml" | absURL }}

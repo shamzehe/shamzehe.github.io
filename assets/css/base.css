@@ -1,0 +1,94 @@
+/* ── Base ─────────────────────────────────────────────────────────────── */
+*, *::before, *::after { box-sizing: border-box; }
+
+html {
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
+  scroll-padding-top: calc(var(--header-h) + 16px);
+}
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--font-sans);
+  font-size: 1.0625rem;
+  line-height: 1.65;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+  overflow-x: hidden;
+}
+
+h1, h2, h3, h4 {
+  margin: 0 0 0.5em;
+  line-height: 1.15;
+  color: var(--text);
+  text-wrap: balance;
+}
+h1, h2 { font-family: var(--font-serif); font-weight: 400; letter-spacing: -0.01em; }
+h1 { font-size: clamp(2.3rem, 3.2vw + 1.3rem, 3.4rem); }
+h2 { font-size: clamp(1.75rem, 1.4vw + 1.25rem, 2.35rem); }
+h3 { font-size: 1.1rem; font-weight: 650; letter-spacing: -0.005em; line-height: 1.3; }
+
+p { margin: 0 0 1em; }
+p, li { text-wrap: pretty; }
+
+a {
+  color: var(--accent);
+  text-decoration-thickness: 1px;
+  text-underline-offset: 0.18em;
+  transition: color 0.15s ease;
+}
+a:hover { color: var(--accent-hover); }
+
+img, svg { display: block; max-width: 100%; }
+img { height: auto; }
+
+ul[role="list"], ol[role="list"] { list-style: none; margin: 0; padding: 0; }
+
+strong { font-weight: 650; }
+
+::selection { background: var(--accent-soft); color: var(--text); }
+
+:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 3px;
+  border-radius: 4px;
+}
+main:focus { outline: none; }
+
+/* IPA and other linguistic notation always use Charis, letters and diacritics alike. */
+.ipa, [lang$="-fonipa"] { font-family: var(--font-ipa); font-feature-settings: normal; letter-spacing: 0; }
+[lang="fa"] { font-family: var(--font-fa); }
+
+.visually-hidden {
+  position: absolute !important;
+  width: 1px; height: 1px;
+  padding: 0; margin: -1px;
+  overflow: hidden; clip: rect(0 0 0 0);
+  white-space: nowrap; border: 0;
+}
+
+.skip-link {
+  position: absolute;
+  left: 12px; top: -48px;
+  z-index: 100;
+  padding: 10px 14px;
+  background: var(--accent);
+  color: var(--on-accent);
+  border-radius: var(--radius-sm);
+  font-weight: 600;
+  text-decoration: none;
+  transition: top 0.15s ease;
+}
+.skip-link:focus { top: 12px; color: var(--on-accent); }
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}

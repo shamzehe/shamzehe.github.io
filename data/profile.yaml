@@ -1,0 +1,92 @@
+# ─────────────────────────────────────────────────────────────────────────────
+# Your basic information. Used on the home page, in the header/footer, and in
+# the search-engine/social-preview data.
+#
+# Editing tips: keep the 2-space indentation; put text in "double quotes";
+# for long paragraphs use `|` and indent the lines underneath (see `bio`).
+# ─────────────────────────────────────────────────────────────────────────────
+name: "Samira Hamzehei"
+name_native: "سمیرا حمزه‌ای"          # Persian spelling (shown right-to-left)
+ipa: "sæ.mi.ˈɾɒ hæm.ze.ˈʔi"           # pronunciation of your name, without brackets
+pronouns: "she/her"
+
+eyebrow: "Phonology · Phonetics · Language Data Science"
+headline: "Linguist working where speech, multilingual data, and machine learning meet."
+bio: |
+  I'm a Ph.D. student in Language Science at UC Irvine, studying how speakers adapt
+  words and sounds across languages, especially English loanwords in Persian. My work
+  combines production and perception experiments, acoustic analysis, and computational
+  models of grammar. I'm keen to bring that to speech technology and multilingual AI,
+  where systems have to cope with how real bilingual speakers talk.
+open_to: "Open to internships and collaborations in speech technology, multilingual NLP, and data science."
+interests:
+  - "Phonological & phonetic learning"
+  - "Loanword phonology"
+  - "Phonological typology"
+  - "Sociophonetics"
+  - "Computational linguistics"
+
+title: "Ph.D. Student in Language Science"
+affiliation:
+  name: "University of California, Irvine"
+  url: "https://www.langsci.uci.edu/"
+location: "Irvine, California"
+
+# The address is assembled in the browser so simple spam bots can't read it.
+email:
+  user: "shamzehe"
+  domain: "uci.edu"
+
+photo:
+  src: "images/samira-hamzehei.jpg"
+  alt: "Portrait of Samira Hamzehei"
+
+links:
+  - label: "LinkedIn"
+    url: "https://www.linkedin.com/in/samira-hamzehei-42065b1b8"
+    icon: "linkedin"
+  - label: "GitHub"
+    url: "https://github.com/shamzehe"
+    icon: "github"
+  - label: "Google Scholar"
+    url: "https://scholar.google.com/citations?user=w2rX1eAAAAAJ"
+    icon: "scholar"
+
+# PDFs live in static/files/. A button only appears once its file exists.
+documents:
+  - label: "Résumé"
+    file: "files/Samira-Hamzehei-Resume.pdf"
+    primary: true
+  - label: "Academic CV"
+    file: "files/Samira-Hamzehei-CV.pdf"
+
+languages:
+  - name: "Persian"
+    level: "Native"
+  - name: "Azerbaijani"
+    level: "Native"
+  - name: "Turkish"
+    level: "Full professional"
+  - name: "English"
+    level: "Professional working"
+  - name: "Arabic"
+    level: "Basic reading"
+
+# "What I work on" cards on the home page. `notation` is the small label on each card.
+focus:
+  - title: "Speech & phonetics"
+    notation: "[ˈspitʃ]"
+    text: "Production and perception experiments with audio stimuli, and acoustic analysis in Praat."
+    tools: ["Praat", "Audacity", "jsPsych"]
+  - title: "Multilingual language data"
+    notation: "fa · az · tr · en"
+    text: "Native Persian and Azerbaijani, professional Turkish and English, and research on how bilingual speakers handle borrowed words."
+    tools: ["Persian", "Azerbaijani", "Turkish", "English"]
+  - title: "Computational modeling & ML"
+    notation: "H = Σ wᵢCᵢ"
+    text: "Constraint-based grammars (Optimality Theory, weighted scalar constraints) and machine-learning foundations."
+    tools: ["Python", "Optimality Theory", "Machine learning"]
+  - title: "Experiment design & analysis"
+    notation: "1 · · · 5"
+    text: "Browser-based experiments, language-background questionnaires (LEAP-Q), and quantitative analysis."
+    tools: ["jsPsych", "R", "Python"]
